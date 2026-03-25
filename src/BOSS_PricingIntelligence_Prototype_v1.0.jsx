@@ -37,23 +37,26 @@ const C = {
 ───────────────────────────────────────────── */
 const BASE = import.meta.env.BASE_URL || "/BOSS-Platform/";
 const AVATARS = {
-  brad:    BASE + "avatars/brad-rico.svg",
-  michael: BASE + "avatars/michael-scrima.svg",
-  joseph:  BASE + "avatars/joseph-carr.svg",
+  brad:    BASE + "avatars/brad-rico.jpg",
+  michael: BASE + "avatars/michael-scrima.jpg",
+  joseph:  BASE + "avatars/joseph-carr.jpg",
 };
 
 function Avatar({ src, name, size = 32 }) {
-  const initials = name.split(" ").map(n => n[0]).join("");
+  const [imgErr, setImgErr] = useState(false);
+  const initials = name ? name.split(" ").map(n => n[0]).join("") : "?";
   return (
     <div style={{ width:size, height:size, borderRadius:"50%", overflow:"hidden",
-      background:C.teal, display:"flex", alignItems:"center", justifyContent:"center",
-      color:C.white, fontWeight:600, fontSize: size * 0.4, flexShrink:0 }}>
-      {src ? (
+      background: `linear-gradient(135deg, ${C.teal}, ${C.navy})`,
+      display:"flex", alignItems:"center", justifyContent:"center",
+      color:C.white, fontWeight:600, fontSize: size * 0.4, flexShrink:0,
+      border:"2px solid rgba(255,255,255,.25)", boxSizing:"border-box" }}>
+      {src && !imgErr ? (
         <img src={src} alt={name} style={{ width:"100%", height:"100%", objectFit:"cover" }}
-          onError={e => { e.target.style.display="none"; e.target.nextSibling.style.display="flex"; }} />
-      ) : null}
-      <span style={{ display: src ? "none" : "flex", alignItems:"center", justifyContent:"center",
-        width:"100%", height:"100%" }}>{initials}</span>
+          onError={() => setImgErr(true)} />
+      ) : (
+        <span>{initials}</span>
+      )}
     </div>
   );
 }
@@ -528,7 +531,9 @@ function useToast() {
 /* ─────────────────────────────────────────────
    NAV
 ───────────────────────────────────────────── */
-function Nav({ crumbs, onNavigate }) {
+function Nav({ crumbs, onNavigate, userName, userAvatar }) {
+  const navUser = userName || "Michael Scrima";
+  const navAvatar = userAvatar || AVATARS.michael;
   return (
     <nav style={{ height:64, background:C.navy, display:"flex", alignItems:"center",
       justifyContent:"space-between", padding:"0 32px", position:"sticky",
@@ -565,8 +570,8 @@ function Nav({ crumbs, onNavigate }) {
       </div>
       <div style={{ display:"flex", alignItems:"center", gap:10,
         color:"rgba(255,255,255,.8)", fontSize:14 }}>
-        <Avatar src={AVATARS.michael} name="Michael Scrima" size={32} />
-        <span>Michael Scrima</span>
+        <Avatar src={navAvatar} name={navUser} size={32} />
+        <span>{navUser}</span>
         <span style={{ color:"rgba(255,255,255,.4)" }}>▾</span>
       </div>
     </nav>
@@ -2168,7 +2173,7 @@ function ProductScreen({ onHome, toast }) {
 
   return (
     <div style={{ flex:1 }}>
-      <Nav crumbs={[{ label:"Home", onClick: onHome }, "Product Intelligence"]} onNavigate={onHome} />
+      <Nav crumbs={[{ label:"Home", onClick: onHome }, "Product Intelligence"]} onNavigate={onHome} userName="Joseph Carr" userAvatar={AVATARS.joseph} />
       <div style={{ maxWidth:1440, margin:"0 auto", padding:"28px 32px 48px" }}>
 
         <button onClick={onHome} style={{ display:"inline-flex", alignItems:"center", gap:6, color:C.teal, fontSize:14, fontWeight:500, cursor:"pointer", background:"none", border:"none", marginBottom:14 }}>← Back to Home</button>
