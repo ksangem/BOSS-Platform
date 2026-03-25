@@ -33,6 +33,32 @@ const C = {
 };
 
 /* ─────────────────────────────────────────────
+   USER PROFILES & AVATARS
+───────────────────────────────────────────── */
+const BASE = import.meta.env.BASE_URL || "/BOSS-Platform/";
+const AVATARS = {
+  brad:    BASE + "avatars/brad-rico.svg",
+  michael: BASE + "avatars/michael-scrima.svg",
+  joseph:  BASE + "avatars/joseph-carr.svg",
+};
+
+function Avatar({ src, name, size = 32 }) {
+  const initials = name.split(" ").map(n => n[0]).join("");
+  return (
+    <div style={{ width:size, height:size, borderRadius:"50%", overflow:"hidden",
+      background:C.teal, display:"flex", alignItems:"center", justifyContent:"center",
+      color:C.white, fontWeight:600, fontSize: size * 0.4, flexShrink:0 }}>
+      {src ? (
+        <img src={src} alt={name} style={{ width:"100%", height:"100%", objectFit:"cover" }}
+          onError={e => { e.target.style.display="none"; e.target.nextSibling.style.display="flex"; }} />
+      ) : null}
+      <span style={{ display: src ? "none" : "flex", alignItems:"center", justifyContent:"center",
+        width:"100%", height:"100%" }}>{initials}</span>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
    PART DATA
 ───────────────────────────────────────────── */
 const PARTS = {
@@ -158,15 +184,15 @@ const PI_PRODUCTS = [
   { id:"VLV-316-NPT50-5K-001", name:"AH-1250 Hydraulic Valve", supplier:"Acme Hydraulics", sku:"AH-1250", cat:"Hydraulic Valves", status:"ready", pct:100,
     attrs:[{n:"Material",v:"316 Stainless Steel",c:98},{n:"Thread Type",v:'NPT 1/2" Male',c:95},{n:"Pressure Rating",v:"5000 PSI",c:99},{n:"Temp Range",v:"-65°F to 400°F",c:97},{n:"Weight",v:"0.48 lbs",c:100},{n:"Finish",v:"Zinc Plated",c:94},{n:"Port Type",v:"2-Port",c:91},{n:"Connection",v:"Threaded",c:96},{n:"Certification",v:"ISO 9001",c:93}],
     comps:[{brand:"Parker",sku:"PKR-2500X",match:89},{brand:"Swagelok",sku:"SS-43VF4",match:85},{brand:"Gates",sku:"GT-V1250",match:78}],
-    cost:18.50,price:25.50,nsId:"10472",sync:"synced",syncAt:"Today 9:17 AM",owner:"Joe Martinez",at:"Today 9:15 AM" },
+    cost:18.50,price:25.50,nsId:"10472",sync:"synced",syncAt:"Today 9:17 AM",owner:"Joseph Carr",at:"Today 9:15 AM" },
   { id:"VLV-316-NPT50-5K-002", name:"AH-1260 Hydraulic Valve", supplier:"Acme Hydraulics", sku:"AH-1260", cat:"Hydraulic Valves", status:"ready", pct:100,
     attrs:[{n:"Material",v:"316 Stainless Steel",c:97},{n:"Thread Type",v:'NPT 1/2" Male',c:96},{n:"Pressure Rating",v:"5000 PSI",c:99},{n:"Temp Range",v:"-65°F to 400°F",c:98},{n:"Weight",v:"0.52 lbs",c:95},{n:"Finish",v:"Zinc Plated",c:93},{n:"Port Type",v:"3-Port",c:90},{n:"Connection",v:"Threaded",c:97},{n:"Certification",v:"ISO 9001",c:94}],
     comps:[{brand:"Parker",sku:"PKR-2610X",match:91},{brand:"Swagelok",sku:"SS-44VF4",match:83}],
-    cost:21.00,price:29.00,nsId:"10473",sync:"synced",syncAt:"Today 9:17 AM",owner:"Joe Martinez",at:"Today 9:15 AM" },
+    cost:21.00,price:29.00,nsId:"10473",sync:"synced",syncAt:"Today 9:17 AM",owner:"Joseph Carr",at:"Today 9:15 AM" },
   { id:"VLV-316-NPT50-5K-003", name:"AH-1270 Hydraulic Valve", supplier:"Acme Hydraulics", sku:"AH-1270", cat:"Hydraulic Valves", status:"ready", pct:100,
     attrs:[{n:"Material",v:"316 Stainless Steel",c:99},{n:"Thread Type",v:'NPT 3/4" Male',c:94},{n:"Pressure Rating",v:"5000 PSI",c:99},{n:"Temp Range",v:"-65°F to 400°F",c:96},{n:"Weight",v:"0.61 lbs",c:97},{n:"Finish",v:"Chrome Plated",c:92},{n:"Port Type",v:"2-Port",c:94},{n:"Connection",v:"Threaded",c:98},{n:"Certification",v:"ISO 9001",c:95}],
     comps:[{brand:"Parker",sku:"PKR-2720X",match:87},{brand:"Gates",sku:"GT-V1270",match:80}],
-    cost:24.00,price:33.50,nsId:null,sync:"pending",syncAt:null,owner:"Joe Martinez",at:"Today 9:15 AM" },
+    cost:24.00,price:33.50,nsId:null,sync:"pending",syncAt:null,owner:"Joseph Carr",at:"Today 9:15 AM" },
   { id:"HSE-304-JIC12-3K-045", name:"Hydraulic Hose JIC 12", supplier:"FlexLine Corp", sku:"FL-H1245", cat:"Hydraulic Hoses", status:"progress", pct:87,
     attrs:[{n:"Material",v:"Synthetic Rubber / Steel Braid",c:96},{n:"Thread Type",v:"JIC 37°",c:94},{n:"Pressure Rating",v:"3000 PSI",c:98},{n:"Temp Range",v:"-40°F to 300°F",c:95},{n:"Diameter",v:'1/2" ID',c:92},{n:"Length",v:"36 inches",c:97},{n:"Certification",v:"",c:0}],
     missing:["Material Certification"], comps:[{brand:"Parker",sku:"PKR-H3045",match:82}],
@@ -174,11 +200,11 @@ const PI_PRODUCTS = [
   { id:"FTG-316-ORF10-6K-128", name:"ORFS Fitting 10mm", supplier:"Precision Fittings Ltd", sku:"PF-ORF10", cat:"Fittings", status:"progress", pct:92,
     attrs:[{n:"Material",v:"316 Stainless Steel",c:99},{n:"Thread Type",v:"ORFS 10mm",c:96},{n:"Pressure Rating",v:"6000 PSI",c:98},{n:"Temp Range",v:"-65°F to 400°F",c:94},{n:"Weight",v:"0.18 lbs",c:97},{n:"Finish",v:"Passivated",c:91},{n:"Certification",v:"ISO 8434",c:93}],
     missing:["Supplier Cost"], comps:[{brand:"Swagelok",sku:"SS-ORF10-6K",match:88},{brand:"Parker",sku:"PKR-F128",match:84}],
-    cost:null,price:null,sync:"pending",owner:"Joe Martinez",at:"Today 8:45 AM",due:"Mar 30" },
+    cost:null,price:null,sync:"pending",owner:"Joseph Carr",at:"Today 8:45 AM",due:"Mar 30" },
   { id:"CPL-316-CAM25-4K-067", name:'Cam Lock Coupling 2.5"', supplier:"CamTech Industries", sku:"CT-CL2540", cat:"Couplings", status:"progress", pct:75,
     attrs:[{n:"Material",v:"316 Stainless Steel",c:95},{n:"Size",v:'2.5"',c:98},{n:"Pressure Rating",v:"4000 PSI",c:94},{n:"Connection",v:"Cam Lock Type E",c:91},{n:"Weight",v:"3.2 lbs",c:89}],
     missing:["Temp Range","Certification","Finish"], comps:[{brand:"Parker",sku:"PKR-CL2540",match:76}],
-    cost:45.00,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 22",due:"Apr 5" },
+    cost:45.00,price:null,sync:"pending",owner:"Joseph Carr",at:"Mar 22",due:"Apr 5" },
   { id:"GAU-SS-NPT25-2K-034", name:'Pressure Gauge 2.5" Dial', supplier:"GaugePro Inc", sku:"GP-2534", cat:"Gauges", status:"progress", pct:80,
     attrs:[{n:"Material",v:"Stainless Steel",c:97},{n:"Thread Type",v:'NPT 1/4"',c:96},{n:"Range",v:"0-2000 PSI",c:99},{n:"Dial Size",v:'2.5"',c:98},{n:"Accuracy",v:"±1%",c:93},{n:"Fill",v:"Glycerin",c:90}],
     missing:["Certification","Weight"], comps:[{brand:"Parker",sku:"PKR-G2534",match:81},{brand:"Swagelok",sku:"SS-G2534",match:79}],
@@ -186,7 +212,7 @@ const PI_PRODUCTS = [
   { id:"ADP-BRASS-NPT25-2K-089", name:'Brass NPT Adapter 1/4"', supplier:"BrassWorks Co", sku:"BW-A089", cat:"Adapters", status:"progress", pct:45,
     attrs:[{n:"Material",v:"Brass C360",c:88},{n:"Thread Type",v:'NPT 1/4"',c:92},{n:"Pressure Rating",v:"2000 PSI",c:85}],
     missing:["Temp Range","Weight","Finish","Certification","Connection Type","Port Type"], comps:[],
-    cost:8.50,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 20",due:"Apr 10" },
+    cost:8.50,price:null,sync:"pending",owner:"Joseph Carr",at:"Mar 20",due:"Apr 10" },
   { id:"HSE-PTFE-JIC08-2K-091", name:"PTFE Lined Hose 3/8\"", supplier:"FlexLine Corp", sku:"FL-PT091", cat:"Hydraulic Hoses", status:"progress", pct:68,
     attrs:[{n:"Material",v:"PTFE / SS Braid",c:94},{n:"Thread Type",v:"JIC 37°",c:93},{n:"Pressure Rating",v:"2000 PSI",c:97},{n:"Temp Range",v:"-100°F to 500°F",c:91}],
     missing:["Diameter","Length","Certification","Weight"], comps:[{brand:"Swagelok",sku:"SS-PT091",match:80}],
@@ -194,7 +220,7 @@ const PI_PRODUCTS = [
   { id:"FTG-316-JIC06-5K-145", name:"JIC Fitting 3/8\" Male", supplier:"Precision Fittings Ltd", sku:"PF-JIC06", cat:"Fittings", status:"progress", pct:88,
     attrs:[{n:"Material",v:"316 Stainless Steel",c:99},{n:"Thread Type",v:"JIC 37° 3/8\"",c:97},{n:"Pressure Rating",v:"5000 PSI",c:98},{n:"Weight",v:"0.12 lbs",c:95},{n:"Finish",v:"Passivated",c:93},{n:"Certification",v:"SAE J514",c:94}],
     missing:["Temp Range"], comps:[{brand:"Parker",sku:"PKR-F145",match:90}],
-    cost:14.00,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 20",due:"Mar 31" },
+    cost:14.00,price:null,sync:"pending",owner:"Joseph Carr",at:"Mar 20",due:"Mar 31" },
   { id:"REG-SS-NPT50-3K-078", name:"SS Pressure Regulator 1/2\"", supplier:"RegTech LLC", sku:"RT-R078", cat:"Regulators", status:"progress", pct:82,
     attrs:[{n:"Material",v:"316 Stainless Steel",c:98},{n:"Thread Type",v:"NPT 1/2\"",c:96},{n:"Pressure Rating",v:"3000 PSI",c:99},{n:"Temp Range",v:"0°F to 300°F",c:94},{n:"Weight",v:"2.1 lbs",c:91}],
     missing:["Certification","Finish"], comps:[{brand:"Parker",sku:"PKR-R078",match:83}],
@@ -202,12 +228,12 @@ const PI_PRODUCTS = [
   { id:"CLP-SS-T12-1K-055", name:"T-Bolt Clamp 1/2\" SS", supplier:"CamTech Industries", sku:"CT-TB055", cat:"Clamps", status:"progress", pct:90,
     attrs:[{n:"Material",v:"Stainless Steel 304",c:97},{n:"Size",v:"1/2\"",c:99},{n:"Type",v:"T-Bolt",c:98},{n:"Pressure Rating",v:"1000 PSI",c:95},{n:"Weight",v:"0.08 lbs",c:93},{n:"Finish",v:"Polished",c:91}],
     missing:["Certification"], comps:[],
-    cost:4.50,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 22",due:"Mar 29" },
+    cost:4.50,price:null,sync:"pending",owner:"Joseph Carr",at:"Mar 22",due:"Mar 29" },
   { id:"CPL-STEEL-CAM40-4K-201", name:'Steel Cam Lock 4"', supplier:"SteelMax Corp", sku:"SM-CL40", cat:"Couplings", status:"blocked", pct:45,
     attrs:[{n:"Material",v:"Carbon Steel",c:90},{n:"Size",v:'4"',c:96},{n:"Pressure Rating",v:"4000 PSI",c:92}],
     missing:["Temp Range","Finish","Certification","Weight","Connection"], blocker:"Supplier not responding (10 days)",
     comps:[{brand:"Parker",sku:"PKR-CL4000",match:72}],
-    cost:null,price:null,sync:"none",owner:"Joe Martinez",at:"Mar 14" },
+    cost:null,price:null,sync:"none",owner:"Joseph Carr",at:"Mar 14" },
   { id:"REG-ALUM-NPT75-1K-156", name:"Aluminum Pressure Regulator", supplier:"RegTech LLC", sku:"RT-R156", cat:"Regulators", status:"blocked", pct:78,
     attrs:[{n:"Material",v:"Aluminum 6061",c:94},{n:"Thread Type",v:'NPT 3/4"',c:96},{n:"Pressure Rating",v:"1000 PSI",c:98},{n:"Temp Range",v:"0°F to 200°F",c:95},{n:"Weight",v:"1.8 lbs",c:92}],
     missing:["Material Certification"], blocker:"Missing material certification",
@@ -539,10 +565,8 @@ function Nav({ crumbs, onNavigate }) {
       </div>
       <div style={{ display:"flex", alignItems:"center", gap:10,
         color:"rgba(255,255,255,.8)", fontSize:14 }}>
-        <div style={{ width:32, height:32, borderRadius:"50%", background:C.teal,
-          display:"flex", alignItems:"center", justifyContent:"center",
-          color:C.white, fontWeight:600, fontSize:13 }}>RS</div>
-        <span>Rohan Singh</span>
+        <Avatar src={AVATARS.michael} name="Michael Scrima" size={32} />
+        <span>Michael Scrima</span>
         <span style={{ color:"rgba(255,255,255,.4)" }}>▾</span>
       </div>
     </nav>
@@ -1468,10 +1492,10 @@ function SuccessModal({ open, partId, onQueue, onDashboard }) {
 ───────────────────────────────────────────── */
 function QueueModal({ open, onClose, toast }) {
   const [rows, setRows] = useState([
-    { id:"PKR-2500X", by:"R. Singh",  date:"Today 09:14", impact:"18.2%→15.2%", just:"Competitive response to Parker Hannifin price reduction. Maintaining market share in critical category.", status:"amber", label:"Pending" },
+    { id:"PKR-2500X", by:"M. Scrima",  date:"Today 09:14", impact:"18.2%→15.2%", just:"Competitive response to Parker Hannifin price reduction. Maintaining market share in critical category.", status:"amber", label:"Pending" },
     { id:"ADP-7712C", by:"M. Kumar",  date:"Mar 23",       impact:"21.2%→19.5%", just:"Strategic account retention for Tier-1 OEM customer requesting volume discount.", status:"amber", label:"Pending" },
     { id:"REG-5504D", by:"S. Patel",  date:"Mar 22",       impact:"17.5%→16.0%", just:"Market entry pricing for new territory expansion in Southeast region.", status:"amber", label:"Pending" },
-    { id:"VAL-8402A", by:"R. Singh",  date:"Mar 21",       impact:"22.5%→23.8%", just:"Price normalisation after audit...", status:"green", label:"Approved" },
+    { id:"VAL-8402A", by:"M. Scrima",  date:"Mar 21",       impact:"22.5%→23.8%", just:"Price normalisation after audit...", status:"green", label:"Approved" },
     { id:"HSE-3301B", by:"A. Sharma", date:"Mar 20",       impact:"19.8%→18.5%", just:"Volume discount for key account...", status:"red", label:"Rejected" },
   ]);
   const [reviewId, setReviewId] = useState(null);
@@ -1631,7 +1655,7 @@ function InsightDetailModal({ open, insight, onClose, onSimulate }) {
 /* ─────────────────────────────────────────────
    HOME NAV (enhanced with search + notifications)
 ───────────────────────────────────────────── */
-function HomeNav({ onHome, notifCount = 3, userName = "Sarah Chen" }) {
+function HomeNav({ onHome, notifCount = 3, userName = "Brad Rico" }) {
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchVal, setSearchVal] = useState("");
   return (
@@ -1677,11 +1701,7 @@ function HomeNav({ onHome, notifCount = 3, userName = "Sarah Chen" }) {
         {/* User */}
         <div style={{ display:"flex", alignItems:"center", gap:10,
           color:"rgba(255,255,255,.8)", fontSize:14 }}>
-          <div style={{ width:32, height:32, borderRadius:"50%", background:C.teal,
-            display:"flex", alignItems:"center", justifyContent:"center",
-            color:C.white, fontWeight:600, fontSize:13 }}>
-            {userName.split(" ").map(n => n[0]).join("")}
-          </div>
+          <Avatar src={AVATARS.brad} name={userName} size={32} />
           <span>{userName}</span>
           <span style={{ color:"rgba(255,255,255,.4)" }}>▾</span>
         </div>
@@ -1769,12 +1789,12 @@ function ModuleCard({ icon, title, subtitle, stats, description, color, onClick 
    HOME SCREEN
 ───────────────────────────────────────────── */
 const HOME_ACTIVITY = [
-  { time:"2 min ago", module:"PRICING", moduleColor:C.teal, user:"Sarah Chen", action:"Approved pricing change for PKR-2500X (+7% increase)", icon:"📊" },
-  { time:"15 min ago", module:"PRODUCT", moduleColor:C.info, user:"Joe Martinez", action:"Launched 3 new valve SKUs to NetSuite", icon:"🚀" },
+  { time:"2 min ago", module:"PRICING", moduleColor:C.teal, user:"Michael Scrima", action:"Approved pricing change for PKR-2500X (+7% increase)", icon:"📊" },
+  { time:"15 min ago", module:"PRODUCT", moduleColor:C.info, user:"Joseph Carr", action:"Launched 3 new valve SKUs to NetSuite", icon:"🚀" },
   { time:"1 hr ago", module:"COMPETITIVE", moduleColor:C.purple, user:"SYSTEM", action:"Detected Parker price change on 8 hose SKUs", icon:"🤖" },
   { time:"2 hr ago", module:"PRICING", moduleColor:C.teal, user:"M. Kumar", action:"Submitted pricing exception for ADP-7712C", icon:"📋" },
   { time:"3 hr ago", module:"PROFITABILITY", moduleColor:C.success, user:"Brad Wilson", action:"Exported Q1 profitability report", icon:"📄" },
-  { time:"Yesterday", module:"PRODUCT", moduleColor:C.info, user:"Joe Martinez", action:"Updated attribute completeness for 45 SKUs", icon:"🔧" },
+  { time:"Yesterday", module:"PRODUCT", moduleColor:C.info, user:"Joseph Carr", action:"Updated attribute completeness for 45 SKUs", icon:"🔧" },
 ];
 
 const HOME_OPPORTUNITIES = [
@@ -1806,7 +1826,7 @@ function HomeScreen({ onNavigate, toast }) {
           display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <div>
             <div style={{ fontSize:24, fontWeight:600, color:C.navy }}>
-              {getGreeting()}, Sarah 👋
+              {getGreeting()}, Brad 👋
             </div>
             <div style={{ fontSize:14, color:C.g500, marginTop:3 }}>
               Last login: Friday, 4:32 PM from Denver Office
@@ -2479,7 +2499,7 @@ function ProductScreen({ onHome, toast }) {
                     <div style={{ fontSize:32, marginBottom:8 }}>🔍</div>
                     <div style={{ fontSize:14, fontWeight:600, color:C.navy, marginBottom:4 }}>No Brennan Equivalent Found</div>
                     <div style={{ fontSize:13, color:C.g500 }}>Product gap detected — consider sourcing from suppliers</div>
-                    <Btn size="sm" style={{ marginTop:12 }} onClick={() => { if(toast) toast("success","Product gap alert sent to Joe Martinez"); }}>Flag Product Gap</Btn>
+                    <Btn size="sm" style={{ marginTop:12 }} onClick={() => { if(toast) toast("success","Product gap alert sent to Joseph Carr"); }}>Flag Product Gap</Btn>
                   </div>
                 )}
 

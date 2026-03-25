@@ -39,8 +39,8 @@ describe('Home Screen (Landing Page)', () => {
   });
 
   it('renders as the default landing page with greeting', () => {
-    // The greeting text includes ", Sarah 👋" regardless of time of day
-    expect(screen.getByText(/, Sarah 👋/)).toBeInTheDocument();
+    // The greeting text includes ", Brad 👋" regardless of time of day
+    expect(screen.getByText(/, Brad 👋/)).toBeInTheDocument();
   });
 
   it('shows the BOSS Platform branding with subtitle', () => {
@@ -155,13 +155,13 @@ describe('Home Screen Navigation', () => {
     fireEvent.click(openButtons[2]);
     await waitForScreen('Module Under Development');
     fireEvent.click(screen.getByText('← Back to Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
   });
 
   it('navigates back to Home from Pricing Dashboard via breadcrumb', async () => {
     await goToPricingDashboard();
     fireEvent.click(screen.getByText('Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
   });
 
   it('navigates to pricing from risk "Fix Now" button', async () => {
@@ -379,7 +379,7 @@ describe('Edge Cases', () => {
     await waitForScreen('Pricing Intelligence Dashboard');
 
     fireEvent.click(screen.getByText('Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
   });
 
   it('visits all 4 modules from Home', { timeout: 15000 }, async () => {
@@ -390,28 +390,28 @@ describe('Edge Cases', () => {
     fireEvent.click(openButtons[0]);
     await waitForScreen('Pricing Intelligence Dashboard');
     fireEvent.click(screen.getByText('Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
 
     // Visit Profitability
     openButtons = screen.getAllByText('Open Dashboard →');
     fireEvent.click(openButtons[1]);
     await waitForScreen('Module Under Development');
     fireEvent.click(screen.getByText('← Back to Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
 
     // Visit Competitive
     openButtons = screen.getAllByText('Open Dashboard →');
     fireEvent.click(openButtons[2]);
     await waitForScreen('Module Under Development');
     fireEvent.click(screen.getByText('← Back to Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
 
     // Visit Product
     openButtons = screen.getAllByText('Open Dashboard →');
     fireEvent.click(openButtons[3]);
     await waitForScreen('Launch Pipeline');
     fireEvent.click(screen.getByText('← Back to Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
   });
 });
 
@@ -1146,13 +1146,13 @@ describe('Product Intelligence — Navigation & Edge Cases', () => {
   it('navigates back to Home from Product Intelligence', async () => {
     await goToProductIntelligence();
     fireEvent.click(screen.getByText('← Back to Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
   });
 
   it('navigates back via breadcrumb Home link', async () => {
     await goToProductIntelligence();
     fireEvent.click(screen.getByText('Home'));
-    await waitForScreen(/, Sarah 👋/);
+    await waitForScreen(/, Brad 👋/);
   });
 
   it('switches between all 5 tabs without errors', async () => {
