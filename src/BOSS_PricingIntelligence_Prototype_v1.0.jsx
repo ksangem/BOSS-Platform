@@ -152,6 +152,127 @@ const TREND_DATA = [
 ];
 
 /* ─────────────────────────────────────────────
+   PRODUCT INTELLIGENCE DATA
+───────────────────────────────────────────── */
+const PI_PRODUCTS = [
+  { id:"VLV-316-NPT50-5K-001", name:"AH-1250 Hydraulic Valve", supplier:"Acme Hydraulics", sku:"AH-1250", cat:"Hydraulic Valves", status:"ready", pct:100,
+    attrs:[{n:"Material",v:"316 Stainless Steel",c:98},{n:"Thread Type",v:'NPT 1/2" Male',c:95},{n:"Pressure Rating",v:"5000 PSI",c:99},{n:"Temp Range",v:"-65°F to 400°F",c:97},{n:"Weight",v:"0.48 lbs",c:100},{n:"Finish",v:"Zinc Plated",c:94},{n:"Port Type",v:"2-Port",c:91},{n:"Connection",v:"Threaded",c:96},{n:"Certification",v:"ISO 9001",c:93}],
+    comps:[{brand:"Parker",sku:"PKR-2500X",match:89},{brand:"Swagelok",sku:"SS-43VF4",match:85},{brand:"Gates",sku:"GT-V1250",match:78}],
+    cost:18.50,price:25.50,nsId:"10472",sync:"synced",syncAt:"Today 9:17 AM",owner:"Joe Martinez",at:"Today 9:15 AM" },
+  { id:"VLV-316-NPT50-5K-002", name:"AH-1260 Hydraulic Valve", supplier:"Acme Hydraulics", sku:"AH-1260", cat:"Hydraulic Valves", status:"ready", pct:100,
+    attrs:[{n:"Material",v:"316 Stainless Steel",c:97},{n:"Thread Type",v:'NPT 1/2" Male',c:96},{n:"Pressure Rating",v:"5000 PSI",c:99},{n:"Temp Range",v:"-65°F to 400°F",c:98},{n:"Weight",v:"0.52 lbs",c:95},{n:"Finish",v:"Zinc Plated",c:93},{n:"Port Type",v:"3-Port",c:90},{n:"Connection",v:"Threaded",c:97},{n:"Certification",v:"ISO 9001",c:94}],
+    comps:[{brand:"Parker",sku:"PKR-2610X",match:91},{brand:"Swagelok",sku:"SS-44VF4",match:83}],
+    cost:21.00,price:29.00,nsId:"10473",sync:"synced",syncAt:"Today 9:17 AM",owner:"Joe Martinez",at:"Today 9:15 AM" },
+  { id:"VLV-316-NPT50-5K-003", name:"AH-1270 Hydraulic Valve", supplier:"Acme Hydraulics", sku:"AH-1270", cat:"Hydraulic Valves", status:"ready", pct:100,
+    attrs:[{n:"Material",v:"316 Stainless Steel",c:99},{n:"Thread Type",v:'NPT 3/4" Male',c:94},{n:"Pressure Rating",v:"5000 PSI",c:99},{n:"Temp Range",v:"-65°F to 400°F",c:96},{n:"Weight",v:"0.61 lbs",c:97},{n:"Finish",v:"Chrome Plated",c:92},{n:"Port Type",v:"2-Port",c:94},{n:"Connection",v:"Threaded",c:98},{n:"Certification",v:"ISO 9001",c:95}],
+    comps:[{brand:"Parker",sku:"PKR-2720X",match:87},{brand:"Gates",sku:"GT-V1270",match:80}],
+    cost:24.00,price:33.50,nsId:null,sync:"pending",syncAt:null,owner:"Joe Martinez",at:"Today 9:15 AM" },
+  { id:"HSE-304-JIC12-3K-045", name:"Hydraulic Hose JIC 12", supplier:"FlexLine Corp", sku:"FL-H1245", cat:"Hydraulic Hoses", status:"progress", pct:87,
+    attrs:[{n:"Material",v:"Synthetic Rubber / Steel Braid",c:96},{n:"Thread Type",v:"JIC 37°",c:94},{n:"Pressure Rating",v:"3000 PSI",c:98},{n:"Temp Range",v:"-40°F to 300°F",c:95},{n:"Diameter",v:'1/2" ID',c:92},{n:"Length",v:"36 inches",c:97},{n:"Certification",v:"",c:0}],
+    missing:["Material Certification"], comps:[{brand:"Parker",sku:"PKR-H3045",match:82}],
+    cost:32.00,price:null,sync:"pending",owner:"Sarah Chen",at:"Yesterday 3:12 PM",due:"Mar 28" },
+  { id:"FTG-316-ORF10-6K-128", name:"ORFS Fitting 10mm", supplier:"Precision Fittings Ltd", sku:"PF-ORF10", cat:"Fittings", status:"progress", pct:92,
+    attrs:[{n:"Material",v:"316 Stainless Steel",c:99},{n:"Thread Type",v:"ORFS 10mm",c:96},{n:"Pressure Rating",v:"6000 PSI",c:98},{n:"Temp Range",v:"-65°F to 400°F",c:94},{n:"Weight",v:"0.18 lbs",c:97},{n:"Finish",v:"Passivated",c:91},{n:"Certification",v:"ISO 8434",c:93}],
+    missing:["Supplier Cost"], comps:[{brand:"Swagelok",sku:"SS-ORF10-6K",match:88},{brand:"Parker",sku:"PKR-F128",match:84}],
+    cost:null,price:null,sync:"pending",owner:"Joe Martinez",at:"Today 8:45 AM",due:"Mar 30" },
+  { id:"CPL-316-CAM25-4K-067", name:'Cam Lock Coupling 2.5"', supplier:"CamTech Industries", sku:"CT-CL2540", cat:"Couplings", status:"progress", pct:75,
+    attrs:[{n:"Material",v:"316 Stainless Steel",c:95},{n:"Size",v:'2.5"',c:98},{n:"Pressure Rating",v:"4000 PSI",c:94},{n:"Connection",v:"Cam Lock Type E",c:91},{n:"Weight",v:"3.2 lbs",c:89}],
+    missing:["Temp Range","Certification","Finish"], comps:[{brand:"Parker",sku:"PKR-CL2540",match:76}],
+    cost:45.00,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 22",due:"Apr 5" },
+  { id:"GAU-SS-NPT25-2K-034", name:'Pressure Gauge 2.5" Dial', supplier:"GaugePro Inc", sku:"GP-2534", cat:"Gauges", status:"progress", pct:80,
+    attrs:[{n:"Material",v:"Stainless Steel",c:97},{n:"Thread Type",v:'NPT 1/4"',c:96},{n:"Range",v:"0-2000 PSI",c:99},{n:"Dial Size",v:'2.5"',c:98},{n:"Accuracy",v:"±1%",c:93},{n:"Fill",v:"Glycerin",c:90}],
+    missing:["Certification","Weight"], comps:[{brand:"Parker",sku:"PKR-G2534",match:81},{brand:"Swagelok",sku:"SS-G2534",match:79}],
+    cost:28.00,price:null,sync:"pending",owner:"Sarah Chen",at:"Mar 21",due:"Apr 2" },
+  { id:"ADP-BRASS-NPT25-2K-089", name:'Brass NPT Adapter 1/4"', supplier:"BrassWorks Co", sku:"BW-A089", cat:"Adapters", status:"progress", pct:45,
+    attrs:[{n:"Material",v:"Brass C360",c:88},{n:"Thread Type",v:'NPT 1/4"',c:92},{n:"Pressure Rating",v:"2000 PSI",c:85}],
+    missing:["Temp Range","Weight","Finish","Certification","Connection Type","Port Type"], comps:[],
+    cost:8.50,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 20",due:"Apr 10" },
+  { id:"HSE-PTFE-JIC08-2K-091", name:"PTFE Lined Hose 3/8\"", supplier:"FlexLine Corp", sku:"FL-PT091", cat:"Hydraulic Hoses", status:"progress", pct:68,
+    attrs:[{n:"Material",v:"PTFE / SS Braid",c:94},{n:"Thread Type",v:"JIC 37°",c:93},{n:"Pressure Rating",v:"2000 PSI",c:97},{n:"Temp Range",v:"-100°F to 500°F",c:91}],
+    missing:["Diameter","Length","Certification","Weight"], comps:[{brand:"Swagelok",sku:"SS-PT091",match:80}],
+    cost:38.00,price:null,sync:"pending",owner:"Sarah Chen",at:"Mar 19",due:"Apr 8" },
+  { id:"FTG-316-JIC06-5K-145", name:"JIC Fitting 3/8\" Male", supplier:"Precision Fittings Ltd", sku:"PF-JIC06", cat:"Fittings", status:"progress", pct:88,
+    attrs:[{n:"Material",v:"316 Stainless Steel",c:99},{n:"Thread Type",v:"JIC 37° 3/8\"",c:97},{n:"Pressure Rating",v:"5000 PSI",c:98},{n:"Weight",v:"0.12 lbs",c:95},{n:"Finish",v:"Passivated",c:93},{n:"Certification",v:"SAE J514",c:94}],
+    missing:["Temp Range"], comps:[{brand:"Parker",sku:"PKR-F145",match:90}],
+    cost:14.00,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 20",due:"Mar 31" },
+  { id:"REG-SS-NPT50-3K-078", name:"SS Pressure Regulator 1/2\"", supplier:"RegTech LLC", sku:"RT-R078", cat:"Regulators", status:"progress", pct:82,
+    attrs:[{n:"Material",v:"316 Stainless Steel",c:98},{n:"Thread Type",v:"NPT 1/2\"",c:96},{n:"Pressure Rating",v:"3000 PSI",c:99},{n:"Temp Range",v:"0°F to 300°F",c:94},{n:"Weight",v:"2.1 lbs",c:91}],
+    missing:["Certification","Finish"], comps:[{brand:"Parker",sku:"PKR-R078",match:83}],
+    cost:62.00,price:null,sync:"pending",owner:"Sarah Chen",at:"Mar 18",due:"Apr 3" },
+  { id:"CLP-SS-T12-1K-055", name:"T-Bolt Clamp 1/2\" SS", supplier:"CamTech Industries", sku:"CT-TB055", cat:"Clamps", status:"progress", pct:90,
+    attrs:[{n:"Material",v:"Stainless Steel 304",c:97},{n:"Size",v:"1/2\"",c:99},{n:"Type",v:"T-Bolt",c:98},{n:"Pressure Rating",v:"1000 PSI",c:95},{n:"Weight",v:"0.08 lbs",c:93},{n:"Finish",v:"Polished",c:91}],
+    missing:["Certification"], comps:[],
+    cost:4.50,price:null,sync:"pending",owner:"Joe Martinez",at:"Mar 22",due:"Mar 29" },
+  { id:"CPL-STEEL-CAM40-4K-201", name:'Steel Cam Lock 4"', supplier:"SteelMax Corp", sku:"SM-CL40", cat:"Couplings", status:"blocked", pct:45,
+    attrs:[{n:"Material",v:"Carbon Steel",c:90},{n:"Size",v:'4"',c:96},{n:"Pressure Rating",v:"4000 PSI",c:92}],
+    missing:["Temp Range","Finish","Certification","Weight","Connection"], blocker:"Supplier not responding (10 days)",
+    comps:[{brand:"Parker",sku:"PKR-CL4000",match:72}],
+    cost:null,price:null,sync:"none",owner:"Joe Martinez",at:"Mar 14" },
+  { id:"REG-ALUM-NPT75-1K-156", name:"Aluminum Pressure Regulator", supplier:"RegTech LLC", sku:"RT-R156", cat:"Regulators", status:"blocked", pct:78,
+    attrs:[{n:"Material",v:"Aluminum 6061",c:94},{n:"Thread Type",v:'NPT 3/4"',c:96},{n:"Pressure Rating",v:"1000 PSI",c:98},{n:"Temp Range",v:"0°F to 200°F",c:95},{n:"Weight",v:"1.8 lbs",c:92}],
+    missing:["Material Certification"], blocker:"Missing material certification",
+    comps:[{brand:"Parker",sku:"PKR-R156",match:80},{brand:"Swagelok",sku:"SS-R156",match:77}],
+    cost:52.00,price:null,sync:"none",owner:"Sarah Chen",at:"Mar 18" },
+];
+
+const PI_SUPPLIERS = [
+  { name:"Acme Hydraulics", contact:"John Smith", email:"john@acmehydraulics.com", products:80, approved:78, pending:2, status:"active", lastUpload:"Today 3:00 PM" },
+  { name:"FlexLine Corp", contact:"Maria Garcia", email:"maria@flexlinecorp.com", products:45, approved:42, pending:3, status:"active", lastUpload:"Yesterday 2:15 PM" },
+  { name:"Precision Fittings Ltd", contact:"Robert Chen", email:"robert@precisionfittings.com", products:120, approved:118, pending:2, status:"active", lastUpload:"Mar 22" },
+  { name:"CamTech Industries", contact:"Lisa Wang", email:"lisa@camtech.com", products:30, approved:28, pending:2, status:"active", lastUpload:"Mar 21" },
+  { name:"SteelMax Corp", contact:"—", email:"—", products:15, approved:12, pending:0, status:"unresponsive", lastUpload:"Mar 14" },
+  { name:"RegTech LLC", contact:"David Park", email:"david@regtech.com", products:25, approved:23, pending:2, status:"active", lastUpload:"Mar 20" },
+  { name:"GaugePro Inc", contact:"Amy Lin", email:"amy@gaugepro.com", products:18, approved:17, pending:1, status:"active", lastUpload:"Mar 19" },
+  { name:"BrassWorks Co", contact:"Tom Reed", email:"tom@brassworks.com", products:35, approved:33, pending:2, status:"active", lastUpload:"Mar 20" },
+];
+
+const PI_ASSEMBLIES = [
+  { id:"HYD-ASM-KIT-5000PSI-12FT", name:"12-ft Hydraulic Hose Assembly Kit", type:"Hydraulic Hose Kit", status:"active",
+    parts:[{sku:"HSE-304-3K-144",name:"Hydraulic Hose 12ft",qty:1,cost:42.00},{sku:"FTG-316-JIC12",name:"JIC Fitting Male",qty:2,cost:18.50},{sku:"FTG-316-NPT12",name:"NPT Fitting Female",qty:2,cost:16.75},{sku:"CLP-STEEL-12",name:'Hose Clamp 1/2"',qty:4,cost:2.80},{sku:"ADP-BRASS-RD",name:"Reducer Adapter",qty:2,cost:12.40},{sku:"SLV-PROT-12",name:"Sleeve Protector",qty:2,cost:4.50},{sku:"TAG-LASER",name:"Laser Tag",qty:1,cost:1.20},{sku:"PKG-BOX-M",name:"Medium Box",qty:1,cost:3.50}],
+    labor:15.00, totalCost:142.40, price:254.80, margin:44.1, nsId:"10501", sync:"synced" },
+  { id:"VLV-KIT-CTRL-3WAY", name:"3-Way Valve Control Kit", type:"Valve Assembly", status:"draft",
+    parts:[{sku:"VAL-8402A",name:'Ball Valve 3/4"',qty:3,cost:52.70},{sku:"ADP-7712C",name:"JIC to NPT Adapter",qty:6,cost:22.05},{sku:"GAU-SS-001",name:"Pressure Gauge",qty:1,cost:28.00},{sku:"MNF-PLATE",name:"Manifold Plate",qty:1,cost:35.00}],
+    labor:25.00, totalCost:346.40, price:0, margin:0, nsId:null, sync:"pending" },
+  { id:"FTG-KIT-METRIC-CONV", name:"Metric Conversion Fitting Kit", type:"Fitting Kit", status:"active",
+    parts:[{sku:"ADP-M10-NPT",name:"M10 to NPT Adapter",qty:4,cost:12.50},{sku:"ADP-M12-JIC",name:"M12 to JIC Adapter",qty:4,cost:14.00},{sku:"ADP-M16-ORF",name:"M16 to ORFS Adapter",qty:4,cost:16.50},{sku:"SEAL-KIT-M",name:"Metric Seal Kit",qty:1,cost:8.00},{sku:"PKG-BOX-S",name:"Small Box",qty:1,cost:2.50}],
+    labor:10.00, totalCost:182.50, price:329.00, margin:44.5, nsId:"10532", sync:"synced" },
+];
+
+const PI_CROSS_REFS = [
+  { comp:"Parker", cSku:"PKR-2500X", bSku:"VLV-316-NPT50-5K-001", match:89, cat:"Hydraulic Valves",
+    bSpecs:{material:"316 Stainless Steel",thread:'NPT 1/2" Male',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.48 lbs",cert:"ISO 9001"},
+    cSpecs:{material:"316 Stainless Steel",thread:'NPT 1/2" Male',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.45 lbs",cert:"ISO 9001"},
+    bPrice:25.50, cPrice:28.75, stock:true, qty:450 },
+  { comp:"Parker", cSku:"PKR-2610X", bSku:"VLV-316-NPT50-5K-002", match:91, cat:"Hydraulic Valves",
+    bSpecs:{material:"316 Stainless Steel",thread:'NPT 1/2" Male',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.52 lbs",cert:"ISO 9001"},
+    cSpecs:{material:"316 Stainless Steel",thread:'NPT 1/2" Male',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.50 lbs",cert:"ISO 9001"},
+    bPrice:29.00, cPrice:32.50, stock:true, qty:280 },
+  { comp:"Swagelok", cSku:"SS-43VF4", bSku:"VLV-316-NPT50-5K-001", match:85, cat:"Hydraulic Valves",
+    bSpecs:{material:"316 Stainless Steel",thread:'NPT 1/2" Male',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.48 lbs",cert:"ISO 9001"},
+    cSpecs:{material:"316 Stainless Steel",thread:'NPT 1/2" Female',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.46 lbs",cert:"ISO 9001"},
+    bPrice:25.50, cPrice:31.00, stock:true, qty:450 },
+  { comp:"Parker", cSku:"PKR-2720X", bSku:"VLV-316-NPT50-5K-003", match:87, cat:"Hydraulic Valves",
+    bSpecs:{material:"316 Stainless Steel",thread:'NPT 3/4" Male',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.61 lbs",cert:"ISO 9001"},
+    cSpecs:{material:"316 Stainless Steel",thread:'NPT 3/4" Male',pressure:"5000 PSI",temp:"-65°F to 400°F",weight:"0.58 lbs",cert:"ISO 9001"},
+    bPrice:33.50, cPrice:37.00, stock:true, qty:180 },
+  { comp:"Parker", cSku:"PKR-H3045", bSku:"HSE-304-JIC12-3K-045", match:82, cat:"Hydraulic Hoses",
+    bSpecs:{material:"Synthetic Rubber / Steel Braid",thread:"JIC 37°",pressure:"3000 PSI",temp:"-40°F to 300°F"},
+    cSpecs:{material:"Synthetic Rubber / Steel Braid",thread:"JIC 37°",pressure:"3000 PSI",temp:"-40°F to 300°F",weight:"1.7 lbs"},
+    bPrice:null, cPrice:48.00, stock:false, qty:0 },
+  { comp:"Swagelok", cSku:"SS-ORF10-6K", bSku:"FTG-316-ORF10-6K-128", match:88, cat:"Fittings",
+    bSpecs:{material:"316 Stainless Steel",thread:"ORFS 10mm",pressure:"6000 PSI",temp:"-65°F to 400°F"},
+    cSpecs:{material:"316 Stainless Steel",thread:"ORFS 10mm",pressure:"6000 PSI",temp:"-65°F to 400°F",weight:"0.17 lbs"},
+    bPrice:null, cPrice:24.00, stock:false, qty:0 },
+  { comp:"Gates", cSku:"GT-MXT-0625", bSku:null, match:0, cat:"Hydraulic Hoses", gap:true,
+    cSpecs:{material:"Synthetic Rubber",thread:"SAE 100R2AT",pressure:"4000 PSI",temp:"-40°F to 300°F"},
+    bPrice:null, cPrice:52.00, stock:false, qty:0 },
+  { comp:"Parker", cSku:"PKR-CL4000", bSku:"CPL-STEEL-CAM40-4K-201", match:72, cat:"Couplings",
+    bSpecs:{material:"Carbon Steel",thread:'4"',pressure:"4000 PSI"},
+    cSpecs:{material:"Carbon Steel",thread:'4"',pressure:"4000 PSI",temp:"-20°F to 400°F",weight:"5.2 lbs",cert:"ISO 9001"},
+    bPrice:null, cPrice:85.00, stock:false, qty:0 },
+];
+
+/* ─────────────────────────────────────────────
    GLOBAL STYLES (injected once)
 ───────────────────────────────────────────── */
 const GLOBAL_CSS = `
@@ -1960,15 +2081,859 @@ function ProfitabilityScreen({ onHome }) {
     ]} />;
 }
 
-function ProductScreen({ onHome }) {
-  return <PlaceholderModule onHome={onHome} title="Product Intelligence" icon="🚀" color={C.info}
-    description="Central product master · AI attribute extraction · Lifecycle tracking · NetSuite integration"
-    stats={[
-      { label:"Total SKUs", value:"150K+", numericValue:150, formatter:v=>`${Math.round(v)}K+`, sub:"Across 8 categories" },
-      { label:"Attribute Completeness", value:"95%", numericValue:95, formatter:v=>`${Math.round(v)}%`, trend:"+8% vs. Q4 2025", trendDir:"up" },
-      { label:"Launch-Ready", value:"3", numericValue:3, formatter:v=>`${Math.round(v)}`, sub:"Valve SKUs ready to go", alert:"amber" },
-      { label:"Launch Velocity", value:"2x", numericValue:2, formatter:v=>`${Math.round(v)}x`, trend:"vs. Q4 2025 baseline", trendDir:"up", sub:"Faster than manual process" },
-    ]} />;
+function ProductScreen({ onHome, toast }) {
+  const [piTab, setPiTab] = useState("pipeline");
+  const [detailProduct, setDetailProduct] = useState(null);
+  const [showDetail, setShowDetail] = useState(false);
+  const [products, setProducts] = useState(PI_PRODUCTS);
+  const [crossSearch, setCrossSearch] = useState("");
+  const [crossResult, setCrossResult] = useState(null);
+  const [showExtraction, setShowExtraction] = useState(false);
+  const [extractionProducts, setExtractionProducts] = useState(null);
+  const [extractionApproved, setExtractionApproved] = useState({});
+  const [editingAttr, setEditingAttr] = useState(null);
+  const [editVal, setEditVal] = useState("");
+  const [showAssemblyDetail, setShowAssemblyDetail] = useState(null);
+  const [showSupplierInvite, setShowSupplierInvite] = useState(false);
+  const [showSyncConfirm, setShowSyncConfirm] = useState(null);
+
+  const ready = products.filter(p => p.status === "ready");
+  const progress = products.filter(p => p.status === "progress");
+  const blocked = products.filter(p => p.status === "blocked");
+
+  const piTabs = [
+    { key:"pipeline", label:"Launch Pipeline", icon:"🚦" },
+    { key:"extraction", label:"AI Extraction", icon:"🤖" },
+    { key:"crossref", label:"Cross-Reference", icon:"🔄" },
+    { key:"assemblies", label:"Assemblies", icon:"🔧" },
+    { key:"suppliers", label:"Supplier Portal", icon:"🤝" },
+  ];
+
+  const confColor = c => c >= 95 ? C.success : c >= 80 ? C.info : c > 0 ? C.warn : C.danger;
+  const confIcon = c => c >= 95 ? "✓" : c >= 80 ? "ℹ" : c > 0 ? "⚠" : "✗";
+  const statusColor = st => st === "ready" ? C.success : st === "progress" ? C.warn : C.danger;
+  const statusLabel = st => st === "ready" ? "Ready to Launch" : st === "progress" ? "In Progress" : "Blocked";
+  const statusDot = st => st === "ready" ? "🟢" : st === "progress" ? "🟡" : "🔴";
+
+  const handleLaunch = (prod) => {
+    setShowSyncConfirm(prod);
+  };
+
+  const confirmLaunch = (prod) => {
+    setProducts(prev => prev.map(p => p.id === prod.id ? { ...p, status:"launched", sync:"synced", nsId: "1" + Math.floor(Math.random()*9000+1000), syncAt:"Just now" } : p));
+    setShowSyncConfirm(null);
+    if (toast) toast("success", `${prod.id} synced to NetSuite — now quotable in CRM`);
+  };
+
+  const handleLaunchAll = () => {
+    setProducts(prev => prev.map(p => p.status === "ready" ? { ...p, status:"launched", sync:"synced", nsId: "1" + Math.floor(Math.random()*9000+1000), syncAt:"Just now" } : p));
+    if (toast) toast("success", `${ready.length} products synced to NetSuite — all quotable`);
+  };
+
+  const startExtraction = () => {
+    setExtractionProducts(PI_PRODUCTS.filter(p => p.status === "ready").slice(0, 3));
+    setExtractionApproved({});
+    setShowExtraction(true);
+    setPiTab("extraction");
+  };
+
+  const handleCrossSearch = () => {
+    const term = crossSearch.trim().toUpperCase();
+    if (!term) return;
+    const found = PI_CROSS_REFS.find(r => r.cSku.toUpperCase() === term || r.bSku?.toUpperCase() === term || r.cSku.toUpperCase().includes(term) || r.comp.toUpperCase().includes(term));
+    setCrossResult(found || "none");
+  };
+
+  const openDetail = (p) => { setDetailProduct(p); setShowDetail(true); };
+
+  return (
+    <div style={{ flex:1 }}>
+      <Nav crumbs={[{ label:"Home", onClick: onHome }, "Product Intelligence"]} onNavigate={onHome} />
+      <div style={{ maxWidth:1440, margin:"0 auto", padding:"28px 32px 48px" }}>
+
+        <button onClick={onHome} style={{ display:"inline-flex", alignItems:"center", gap:6, color:C.teal, fontSize:14, fontWeight:500, cursor:"pointer", background:"none", border:"none", marginBottom:14 }}>← Back to Home</button>
+
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:24 }}>
+          <div>
+            <div style={{ fontSize:26, fontWeight:700, color:C.navy, letterSpacing:-0.5, display:"flex", alignItems:"center", gap:10 }}>
+              <span style={{ fontSize:30 }}>🚀</span> Product Intelligence
+            </div>
+            <div style={{ fontSize:14, color:C.g500, marginTop:3 }}>AI-powered product lifecycle engine · PDF extraction · Launch pipeline · NetSuite sync</div>
+          </div>
+          <div style={{ fontSize:12, color:C.g500, textAlign:"right", lineHeight:1.9 }}>
+            <strong style={{ color:C.g600 }}>Last refreshed:</strong> Today, 09:14 AM<br />
+            <span style={{ color:C.success, fontWeight:600 }}>● Live</span>
+          </div>
+        </div>
+
+        {/* KPI Row */}
+        <div className="stagger-1" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:16, marginBottom:24 }}>
+          <KPICard label="Launch Velocity" value="2.1x" numericValue={2.1} formatter={v=>`${v.toFixed(1)}x`} trend="+15% vs Q4" trendDir="up" sub="Avg time-to-launch: 14 days" />
+          <KPICard label="Attribute Completeness" value="95%" numericValue={95} formatter={v=>`${Math.round(v)}%`} trend="+8% vs Q4 2025" trendDir="up" sub="1,400+ SKUs tracked" />
+          <KPICard label="Launch-Ready" value={String(ready.length)} numericValue={ready.length} formatter={v=>`${Math.round(v)}`} sub="Products ready to sync" alert={ready.length > 0 ? "amber" : undefined} onClick={() => setPiTab("pipeline")} />
+          <KPICard label="Blocked Products" value={String(blocked.length)} numericValue={blocked.length} formatter={v=>`${Math.round(v)}`} sub="Require supplier action" alert="red" onClick={() => setPiTab("pipeline")} />
+        </div>
+
+        {/* Tab Nav */}
+        <div className="stagger-2" style={{ display:"flex", gap:4, marginBottom:20, borderBottom:`2px solid ${C.g200}`, paddingBottom:0 }}>
+          {piTabs.map(t => (
+            <button key={t.key} onClick={() => setPiTab(t.key)}
+              style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 18px", fontSize:13, fontWeight:600,
+                color: piTab === t.key ? C.teal : C.g500, background: piTab === t.key ? "#E0F4FB" : "transparent",
+                border:"none", borderBottom: piTab === t.key ? `2px solid ${C.teal}` : "2px solid transparent",
+                borderRadius:"6px 6px 0 0", cursor:"pointer", transition:"all .15s", marginBottom:-2 }}>
+              <span style={{ fontSize:15 }}>{t.icon}</span> {t.label}
+            </button>
+          ))}
+        </div>
+
+        {/* ═══════ TAB: LAUNCH PIPELINE ═══════ */}
+        {piTab === "pipeline" && (
+          <div className="stagger-3">
+            {/* Ready Section */}
+            <div style={{ ...s.card, marginBottom:20 }}>
+              <div style={{ ...s.panelHeader, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                <div>
+                  <div style={{ ...s.panelTitle, color:C.success }}>🟢 Ready to Launch ({ready.length} products)</div>
+                  <div style={s.panelSub}>100% attribute completeness — one click to sync to NetSuite</div>
+                </div>
+                {ready.length > 0 && <Btn size="sm" onClick={handleLaunchAll}>Launch All {ready.length} →</Btn>}
+              </div>
+              <div style={s.panelBody}>
+                {ready.length === 0 ? (
+                  <div style={{ textAlign:"center", padding:"20px 0", color:C.g500, fontSize:14 }}>All launch-ready products have been synced to NetSuite ✓</div>
+                ) : ready.map(p => (
+                  <div key={p.id} style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"14px 16px", borderRadius:6, border:`1px solid ${C.g200}`, marginBottom:8, transition:"box-shadow .15s" }}
+                    onMouseEnter={e => e.currentTarget.style.boxShadow="0 2px 8px rgba(0,0,0,.08)"} onMouseLeave={e => e.currentTarget.style.boxShadow="none"}>
+                    <div style={{ display:"flex", alignItems:"center", gap:14, flex:1 }}>
+                      <span style={{ fontSize:18 }}>🟢</span>
+                      <div>
+                        <div style={{ fontSize:14, fontWeight:600, color:C.navy }}>{p.id}</div>
+                        <div style={{ fontSize:12, color:C.g500 }}>{p.cat} · {p.name} · Supplier: {p.supplier}</div>
+                      </div>
+                    </div>
+                    <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                      <Badge type="green">100% Complete</Badge>
+                      {p.sync === "synced" && <Badge type="teal">✓ NetSuite #{p.nsId}</Badge>}
+                      <Btn size="sm" variant="secondary" onClick={() => openDetail(p)}>View Details</Btn>
+                      {p.sync !== "synced" && <Btn size="sm" onClick={() => handleLaunch(p)}>Launch Now</Btn>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* In Progress Section */}
+            <div style={{ ...s.card, marginBottom:20 }}>
+              <div style={s.panelHeader}>
+                <div style={{ ...s.panelTitle, color:"#92400E" }}>🟡 In Progress ({progress.length} products)</div>
+                <div style={s.panelSub}>Missing attributes or pending verification</div>
+              </div>
+              <div style={s.panelBody}>
+                {progress.map(p => (
+                  <div key={p.id} style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"12px 16px", borderRadius:6, border:`1px solid ${C.g200}`, marginBottom:8, cursor:"pointer" }}
+                    onClick={() => openDetail(p)}
+                    onMouseEnter={e => e.currentTarget.style.boxShadow="0 2px 8px rgba(0,0,0,.08)"} onMouseLeave={e => e.currentTarget.style.boxShadow="none"}>
+                    <div style={{ display:"flex", alignItems:"center", gap:14, flex:1 }}>
+                      <span style={{ fontSize:16 }}>🟡</span>
+                      <div style={{ flex:1 }}>
+                        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                          <span style={{ fontSize:13, fontWeight:600, color:C.navy }}>{p.id}</span>
+                          <Badge>{p.cat}</Badge>
+                        </div>
+                        <div style={{ fontSize:12, color:C.g500, marginTop:2 }}>
+                          {p.name} · Missing: <span style={{ color:C.danger, fontWeight:500 }}>{p.missing?.join(", ")}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                      <div style={{ width:100, height:8, background:C.g200, borderRadius:4, overflow:"hidden" }}>
+                        <div style={{ width:`${p.pct}%`, height:"100%", background: p.pct >= 90 ? C.success : p.pct >= 70 ? C.warn : C.danger, borderRadius:4, transition:"width .3s" }} />
+                      </div>
+                      <span style={{ fontSize:12, fontWeight:600, color: p.pct >= 90 ? C.success : C.warn, minWidth:36 }}>{p.pct}%</span>
+                      <span style={{ fontSize:11, color:C.g400 }}>Owner: {p.owner}</span>
+                      {p.due && <span style={{ fontSize:11, color:C.g400 }}>Due: {p.due}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Blocked Section */}
+            <div style={{ ...s.card }}>
+              <div style={s.panelHeader}>
+                <div style={{ ...s.panelTitle, color:C.danger }}>🔴 Blocked ({blocked.length} products)</div>
+                <div style={s.panelSub}>Require external action to proceed</div>
+              </div>
+              <div style={s.panelBody}>
+                {blocked.map(p => (
+                  <div key={p.id} style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"14px 16px", borderRadius:6, border:`1px solid #FECACA`, background:"#FEF2F2", marginBottom:8, cursor:"pointer" }}
+                    onClick={() => openDetail(p)}>
+                    <div style={{ display:"flex", alignItems:"center", gap:14, flex:1 }}>
+                      <span style={{ fontSize:16 }}>🔴</span>
+                      <div>
+                        <div style={{ fontSize:13, fontWeight:600, color:C.navy }}>{p.id} — {p.name}</div>
+                        <div style={{ fontSize:12, color:C.danger, fontWeight:500 }}>Blocker: {p.blocker}</div>
+                      </div>
+                    </div>
+                    <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                      <span style={{ fontSize:12, fontWeight:600, color:C.danger }}>{p.pct}%</span>
+                      <Btn size="sm" variant="danger" onClick={e => { e.stopPropagation(); if(toast) toast("success", `Escalation email sent for ${p.id}`); }}>Escalate</Btn>
+                      <Btn size="sm" variant="secondary" onClick={e => { e.stopPropagation(); if(toast) toast("success", `Searching alternative suppliers for ${p.id}...`); }}>Find Alt Supplier</Btn>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ═══════ TAB: AI EXTRACTION ═══════ */}
+        {piTab === "extraction" && (
+          <div className="stagger-3">
+            {!showExtraction ? (
+              <div>
+                {/* Upload Zone */}
+                <div style={{ ...s.card, marginBottom:20 }}>
+                  <div style={s.panelHeader}>
+                    <div style={s.panelTitle}>🤖 AI-Powered PDF Spec Extraction</div>
+                    <div style={s.panelSub}>Upload supplier spec sheets — AI extracts all attributes automatically</div>
+                  </div>
+                  <div style={s.panelBody}>
+                    <div onClick={startExtraction} style={{ border:`2px dashed ${C.teal}`, borderRadius:8, padding:"48px 32px", textAlign:"center", cursor:"pointer", background:"#F0F9FF", transition:"all .2s" }}
+                      onMouseEnter={e => { e.currentTarget.style.background="#E0F4FB"; e.currentTarget.style.borderColor=C.tealDark; }}
+                      onMouseLeave={e => { e.currentTarget.style.background="#F0F9FF"; e.currentTarget.style.borderColor=C.teal; }}>
+                      <div style={{ fontSize:48, marginBottom:12 }}>📄</div>
+                      <div style={{ fontSize:16, fontWeight:600, color:C.navy, marginBottom:6 }}>Drop Supplier Spec Sheet Here</div>
+                      <div style={{ fontSize:13, color:C.g500, marginBottom:14 }}>Accepted: PDF, Excel, CSV · AI extracts specs in ~5 minutes</div>
+                      <Btn>Click to Upload & Extract (Demo)</Btn>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recent Extractions */}
+                <div style={s.card}>
+                  <div style={s.panelHeader}>
+                    <div style={s.panelTitle}>Recent Extractions</div>
+                    <div style={s.panelSub}>Previously processed supplier documents</div>
+                  </div>
+                  <div style={s.panelBody}>
+                    {[
+                      { file:"AcmeValves_Q1_2026_Specs.pdf", pages:14, products:3, confidence:91, date:"Today 8:05 AM", status:"approved" },
+                      { file:"FlexLine_Hose_Catalog.pdf", pages:28, products:8, confidence:88, date:"Mar 22", status:"approved" },
+                      { file:"PrecisionFittings_NewSKUs.xlsx", pages:1, products:12, confidence:94, date:"Mar 20", status:"approved" },
+                      { file:"GaugePro_Industrial_Specs.pdf", pages:6, products:5, confidence:86, date:"Mar 19", status:"partial" },
+                    ].map((ex, i) => (
+                      <div key={i} style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"12px 14px", borderRadius:6, border:`1px solid ${C.g200}`, marginBottom:8 }}>
+                        <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                          <span style={{ fontSize:20 }}>📄</span>
+                          <div>
+                            <div style={{ fontSize:13, fontWeight:600, color:C.navy }}>{ex.file}</div>
+                            <div style={{ fontSize:11, color:C.g500 }}>{ex.pages} pages · {ex.products} products extracted · {ex.date}</div>
+                          </div>
+                        </div>
+                        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                          <span style={{ fontSize:12, fontWeight:600, color: ex.confidence >= 90 ? C.success : C.warn }}>{ex.confidence}% avg confidence</span>
+                          <Badge type={ex.status === "approved" ? "green" : "amber"}>{ex.status === "approved" ? "✓ Approved" : "⚠ Partial"}</Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Extraction Review */
+              <div>
+                <div style={{ ...s.card, marginBottom:20 }}>
+                  <div style={{ ...s.panelHeader, background:"linear-gradient(to right,#EFF9FF,#F0FDF4)" }}>
+                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                      <div>
+                        <div style={s.panelTitle}>🤖 AI Extraction Review — Batch #472</div>
+                        <div style={s.panelSub}>Source: AcmeValves_Q1_2026_Specs.pdf (14 pages) · Extracted: {extractionProducts?.length} products · Average Confidence: 91%</div>
+                      </div>
+                      <div style={{ display:"flex", gap:8 }}>
+                        <Btn variant="secondary" size="sm" onClick={() => { if(toast) toast("success","Opening original PDF viewer..."); }}>View Original PDF</Btn>
+                        <Btn size="sm" onClick={() => {
+                          setExtractionApproved(Object.fromEntries(extractionProducts.map(p => [p.id, true])));
+                          if(toast) toast("success", `All ${extractionProducts.length} products approved — syncing to pipeline`);
+                        }}>Approve All {extractionProducts?.length}</Btn>
+                        <Btn variant="ghost" size="sm" onClick={() => setShowExtraction(false)}>Close</Btn>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={s.panelBody}>
+                    {extractionProducts?.map((p, idx) => (
+                      <div key={p.id} style={{ border:`1px solid ${extractionApproved[p.id] ? "#BBF7D0" : C.g300}`, borderRadius:8, marginBottom:16, overflow:"hidden", background: extractionApproved[p.id] ? "#F0FDF4" : C.white }}>
+                        <div style={{ padding:"14px 18px", borderBottom:`1px solid ${C.g200}`, display:"flex", justifyContent:"space-between", alignItems:"center", background: extractionApproved[p.id] ? "#DCFCE7" : C.g100 }}>
+                          <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+                            <span style={{ fontSize:14, fontWeight:700, color:C.navy }}>Product {idx+1} of {extractionProducts.length}:</span>
+                            <span style={{ fontSize:14, fontWeight:600, color:C.teal }}>{p.name}</span>
+                            <Badge type={p.attrs.every(a => a.c >= 80) ? "green" : "amber"}>
+                              {Math.round(p.attrs.reduce((s,a) => s+a.c, 0) / p.attrs.length)}% avg confidence
+                            </Badge>
+                            {extractionApproved[p.id] && <Badge type="green">✓ Approved</Badge>}
+                          </div>
+                        </div>
+                        <div style={{ padding:"16px 18px" }}>
+                          <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:10 }}>Extracted Attributes ({p.attrs.length} fields)</div>
+                          <table style={{ width:"100%", borderCollapse:"collapse", marginBottom:14 }}>
+                            <thead>
+                              <tr style={{ borderBottom:`2px solid ${C.g200}` }}>
+                                {["Attribute","Extracted Value","Confidence",""].map(h => (
+                                  <th key={h} style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:0.4, color:C.g500, textAlign:"left", paddingBottom:8, paddingRight:12 }}>{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {p.attrs.map(a => (
+                                <tr key={a.n} style={{ borderBottom:`1px solid ${C.g200}` }}>
+                                  <td style={{ padding:"8px 12px 8px 0", fontSize:13, color:C.g600, fontWeight:500 }}>{a.n}</td>
+                                  <td style={{ padding:"8px 12px 8px 0", fontSize:13, fontWeight:600, color:C.navy }}>
+                                    {editingAttr === `${p.id}-${a.n}` ? (
+                                      <div style={{ display:"flex", gap:6 }}>
+                                        <input value={editVal} onChange={e => setEditVal(e.target.value)}
+                                          style={{ border:`1px solid ${C.teal}`, borderRadius:4, padding:"4px 8px", fontSize:13, width:200, outline:"none" }} autoFocus />
+                                        <Btn size="sm" onClick={() => {
+                                          a.v = editVal; a.c = 100;
+                                          setEditingAttr(null);
+                                          if(toast) toast("success", `${a.n} corrected — confidence updated to 100%`);
+                                        }}>Save</Btn>
+                                        <Btn size="sm" variant="ghost" onClick={() => setEditingAttr(null)}>Cancel</Btn>
+                                      </div>
+                                    ) : a.v || <span style={{ color:C.danger, fontStyle:"italic" }}>Missing</span>}
+                                  </td>
+                                  <td style={{ padding:"8px 12px 8px 0" }}>
+                                    <span style={{ display:"inline-flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600, color: confColor(a.c) }}>
+                                      {confIcon(a.c)} {a.c > 0 ? `${a.c}%` : "—"}
+                                    </span>
+                                  </td>
+                                  <td style={{ padding:"8px 0" }}>
+                                    {!extractionApproved[p.id] && (
+                                      <button onClick={() => { setEditingAttr(`${p.id}-${a.n}`); setEditVal(a.v); }}
+                                        style={{ fontSize:11, color:C.teal, background:"none", border:"none", cursor:"pointer", textDecoration:"underline" }}>Edit</button>
+                                    )}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+
+                          {/* Competitive Equivalents */}
+                          {p.comps.length > 0 && (
+                            <div style={{ marginBottom:14 }}>
+                              <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:8 }}>AI-Matched Competitive Equivalents</div>
+                              <div style={{ display:"flex", gap:10 }}>
+                                {p.comps.map(c => (
+                                  <div key={c.sku} style={{ padding:"8px 14px", background:C.g100, borderRadius:6, border:`1px solid ${C.g200}` }}>
+                                    <span style={{ fontSize:12, fontWeight:600, color:C.navy }}>{c.brand}</span>
+                                    <span style={{ fontSize:12, color:C.g500, marginLeft:8 }}>{c.sku}</span>
+                                    <Badge type={c.match >= 85 ? "green" : c.match >= 70 ? "amber" : "default"} style={{ marginLeft:8 }}>{c.match}% match</Badge>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {!extractionApproved[p.id] && (
+                            <div style={{ display:"flex", gap:8 }}>
+                              <Btn size="sm" onClick={() => {
+                                setExtractionApproved(prev => ({...prev, [p.id]: true}));
+                                if(toast) toast("success", `${p.name} approved — added to launch pipeline`);
+                              }}>Approve Product</Btn>
+                              <Btn size="sm" variant="secondary" onClick={() => { if(toast) toast("success", `${p.name} flagged for review`); }}>Flag for Review</Btn>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ═══════ TAB: CROSS-REFERENCE ═══════ */}
+        {piTab === "crossref" && (
+          <div className="stagger-3">
+            <div style={{ ...s.card, marginBottom:20 }}>
+              <div style={s.panelHeader}>
+                <div style={s.panelTitle}>🔄 Competitive Equivalency Mapping</div>
+                <div style={s.panelSub}>Search by competitor part number to find Brennan equivalents instantly</div>
+              </div>
+              <div style={{ ...s.panelBody }}>
+                <div style={{ display:"flex", gap:10, marginBottom:20 }}>
+                  <div style={{ position:"relative", flex:1 }}>
+                    <span style={{ position:"absolute", left:12, top:"50%", transform:"translateY(-50%)", fontSize:14, color:C.g400 }}>🔍</span>
+                    <input value={crossSearch} onChange={e => setCrossSearch(e.target.value)}
+                      onKeyDown={e => e.key === "Enter" && handleCrossSearch()}
+                      placeholder="Enter competitor part number (e.g., PKR-2500X, SS-43VF4)..."
+                      style={{ width:"100%", height:44, borderRadius:6, border:`1px solid ${C.g400}`, paddingLeft:36, paddingRight:12, fontSize:14, outline:"none", transition:"border-color .2s" }}
+                      onFocus={e => e.target.style.borderColor = C.teal} onBlur={e => e.target.style.borderColor = C.g400} />
+                  </div>
+                  <Btn onClick={handleCrossSearch}>Search</Btn>
+                </div>
+
+                {crossResult === "none" && (
+                  <div style={{ textAlign:"center", padding:"32px", background:C.g100, borderRadius:8 }}>
+                    <div style={{ fontSize:32, marginBottom:8 }}>🔍</div>
+                    <div style={{ fontSize:14, fontWeight:600, color:C.navy, marginBottom:4 }}>No Brennan Equivalent Found</div>
+                    <div style={{ fontSize:13, color:C.g500 }}>Product gap detected — consider sourcing from suppliers</div>
+                    <Btn size="sm" style={{ marginTop:12 }} onClick={() => { if(toast) toast("success","Product gap alert sent to Joe Martinez"); }}>Flag Product Gap</Btn>
+                  </div>
+                )}
+
+                {crossResult && crossResult !== "none" && (
+                  <div>
+                    {/* Match Result */}
+                    <div style={{ border:`1px solid ${C.teal}`, borderRadius:8, overflow:"hidden", marginBottom:20 }}>
+                      <div style={{ padding:"16px 20px", background:"linear-gradient(to right,#E0F4FB,#F0FDF4)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                        <div>
+                          <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.teal }}>Brennan Equivalent Found ({crossResult.match}% match)</div>
+                          <div style={{ fontSize:18, fontWeight:700, color:C.navy, marginTop:4 }}>{crossResult.bSku || "No direct match"}</div>
+                        </div>
+                        <div style={{ display:"flex", gap:8 }}>
+                          {crossResult.bSku && crossResult.bPrice && (
+                            <Btn size="sm" onClick={() => { if(toast) toast("success",`${crossResult.bSku} added to quote`); }}>Add to Quote</Btn>
+                          )}
+                          <Btn size="sm" variant="secondary" onClick={() => { if(toast) toast("success","Full comparison exported"); }}>Export Comparison</Btn>
+                        </div>
+                      </div>
+
+                      {/* Price Comparison */}
+                      {crossResult.bPrice && (
+                        <div style={{ padding:"16px 20px", display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, borderBottom:`1px solid ${C.g200}` }}>
+                          <div style={{ textAlign:"center", padding:"12px", background:C.g100, borderRadius:6 }}>
+                            <div style={{ fontSize:11, color:C.g500, textTransform:"uppercase", letterSpacing:0.4, marginBottom:4 }}>Brennan Price</div>
+                            <div style={{ fontSize:22, fontWeight:700, color:C.teal }}>${crossResult.bPrice.toFixed(2)}</div>
+                          </div>
+                          <div style={{ textAlign:"center", padding:"12px", background:C.g100, borderRadius:6 }}>
+                            <div style={{ fontSize:11, color:C.g500, textTransform:"uppercase", letterSpacing:0.4, marginBottom:4 }}>{crossResult.comp} Price</div>
+                            <div style={{ fontSize:22, fontWeight:700, color:C.g600 }}>${crossResult.cPrice.toFixed(2)}</div>
+                          </div>
+                          <div style={{ textAlign:"center", padding:"12px", background:"#F0FDF4", borderRadius:6, border:`1px solid #BBF7D0` }}>
+                            <div style={{ fontSize:11, color:C.success, textTransform:"uppercase", letterSpacing:0.4, marginBottom:4 }}>Your Savings</div>
+                            <div style={{ fontSize:22, fontWeight:700, color:C.success }}>
+                              ${(crossResult.cPrice - crossResult.bPrice).toFixed(2)} ({Math.round((crossResult.cPrice - crossResult.bPrice) / crossResult.cPrice * 100)}% less)
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Spec Comparison Table */}
+                      <div style={{ padding:"16px 20px" }}>
+                        <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:10 }}>Specification Comparison</div>
+                        <table style={{ width:"100%", borderCollapse:"collapse" }}>
+                          <thead>
+                            <tr style={{ background:C.navy }}>
+                              {["Attribute", crossResult.bSku ? `Brennan ${crossResult.bSku}` : "Brennan", `${crossResult.comp} ${crossResult.cSku}`, "Match"].map(h => (
+                                <th key={h} style={{ color:C.white, fontSize:11, fontWeight:600, textAlign:"left", padding:"10px 12px", letterSpacing:0.3 }}>{h}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {Object.keys(crossResult.cSpecs || {}).map(key => {
+                              const bVal = crossResult.bSpecs?.[key] || "—";
+                              const cVal = crossResult.cSpecs[key];
+                              const match = bVal === cVal;
+                              return (
+                                <tr key={key} style={{ borderBottom:`1px solid ${C.g200}` }}>
+                                  <td style={{ padding:"9px 12px", fontSize:13, fontWeight:500, color:C.g600, textTransform:"capitalize" }}>{key}</td>
+                                  <td style={{ padding:"9px 12px", fontSize:13, fontWeight:600, color:C.navy }}>{bVal}</td>
+                                  <td style={{ padding:"9px 12px", fontSize:13 }}>{cVal}</td>
+                                  <td style={{ padding:"9px 12px" }}>
+                                    <span style={{ color: match ? C.success : C.warn, fontWeight:600, fontSize:12 }}>{match ? "✓ Exact" : "≈ Close"}</span>
+                                  </td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+
+                        {crossResult.stock && (
+                          <div style={{ marginTop:14, padding:"10px 14px", background:"#F0FDF4", borderRadius:6, border:`1px solid #BBF7D0`, fontSize:13 }}>
+                            <span style={{ fontWeight:600, color:C.success }}>✓ In Stock:</span> {crossResult.qty} units ready to ship
+                          </div>
+                        )}
+
+                        <div style={{ marginTop:12, padding:"10px 14px", background:C.g100, borderRadius:6, fontSize:13, color:C.g600 }}>
+                          <strong>Match Confidence:</strong> {crossResult.match}% — {crossResult.match >= 85 ? "Functionally Equivalent" : crossResult.match >= 70 ? "Close Alternative" : "Partial Match"}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Quick Reference Table */}
+                {!crossResult && (
+                  <div>
+                    <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:10 }}>Full Cross-Reference Database</div>
+                    <table style={{ width:"100%", borderCollapse:"collapse" }}>
+                      <thead>
+                        <tr style={{ background:C.teal }}>
+                          {["Competitor","Competitor SKU","Brennan SKU","Category","Match %","Brennan Price","Action"].map(h => (
+                            <th key={h} style={{ color:C.white, fontSize:11, fontWeight:600, textAlign:"left", padding:"10px 12px", letterSpacing:0.3 }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {PI_CROSS_REFS.map((r, i) => (
+                          <tr key={i} style={{ borderBottom:`1px solid ${C.g200}`, background: i % 2 ? C.g100 : C.white }}>
+                            <td style={{ padding:"10px 12px", fontSize:12, fontWeight:500 }}>{r.comp}</td>
+                            <td style={{ padding:"10px 12px", fontSize:12, fontWeight:600, color:C.g700 }}>{r.cSku}</td>
+                            <td style={{ padding:"10px 12px", fontSize:12, fontWeight:600, color: r.bSku ? C.teal : C.danger }}>
+                              {r.bSku || <span style={{ fontStyle:"italic" }}>No equivalent</span>}
+                              {r.gap && <Badge type="red" style={{ marginLeft:6 }}>Gap</Badge>}
+                            </td>
+                            <td style={{ padding:"10px 12px" }}><Badge>{r.cat}</Badge></td>
+                            <td style={{ padding:"10px 12px", fontSize:12, fontWeight:600, color: r.match >= 85 ? C.success : r.match >= 70 ? C.warn : C.danger }}>
+                              {r.match > 0 ? `${r.match}%` : "—"}
+                            </td>
+                            <td style={{ padding:"10px 12px", fontSize:12, fontWeight:600 }}>{r.bPrice ? `$${r.bPrice.toFixed(2)}` : "—"}</td>
+                            <td style={{ padding:"10px 12px" }}>
+                              <button onClick={() => { setCrossSearch(r.cSku); setCrossResult(r); }}
+                                style={{ fontSize:11, color:C.teal, background:"none", border:"none", cursor:"pointer", textDecoration:"underline" }}>View Match</button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ═══════ TAB: ASSEMBLIES ═══════ */}
+        {piTab === "assemblies" && (
+          <div className="stagger-3">
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:16 }}>
+              <div style={{ fontSize:14, color:C.g500 }}>{PI_ASSEMBLIES.length} assemblies configured</div>
+              <Btn size="sm" onClick={() => { if(toast) toast("success","Opening Assembly Builder — add components to create new kit"); }}>+ New Assembly</Btn>
+            </div>
+
+            {PI_ASSEMBLIES.map(asm => {
+              const compCost = asm.parts.reduce((sum, p) => sum + p.cost * p.qty, 0);
+              const totalCost = compCost + asm.labor;
+              const totalQty = asm.parts.reduce((sum, p) => sum + p.qty, 0);
+              const isExpanded = showAssemblyDetail === asm.id;
+
+              return (
+                <div key={asm.id} style={{ ...s.card, marginBottom:16 }}>
+                  <div style={{ padding:"18px 22px", display:"flex", justifyContent:"space-between", alignItems:"center", cursor:"pointer", borderBottom: isExpanded ? `1px solid ${C.g200}` : "none" }}
+                    onClick={() => setShowAssemblyDetail(isExpanded ? null : asm.id)}>
+                    <div style={{ display:"flex", alignItems:"center", gap:14 }}>
+                      <span style={{ fontSize:22 }}>🔧</span>
+                      <div>
+                        <div style={{ fontSize:15, fontWeight:700, color:C.navy }}>{asm.id}</div>
+                        <div style={{ fontSize:13, color:C.g500 }}>{asm.name} · {asm.type} · {asm.parts.length} components, {totalQty} items</div>
+                      </div>
+                    </div>
+                    <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                      <Badge type={asm.status === "active" ? "green" : "amber"}>{asm.status === "active" ? "Active" : "Draft"}</Badge>
+                      {asm.sync === "synced" && <Badge type="teal">✓ NetSuite #{asm.nsId}</Badge>}
+                      {asm.price > 0 && <span style={{ fontSize:14, fontWeight:700, color:C.navy }}>${asm.price.toFixed(2)}</span>}
+                      <span style={{ color:C.g400, fontSize:16 }}>{isExpanded ? "▲" : "▼"}</span>
+                    </div>
+                  </div>
+
+                  {isExpanded && (
+                    <div style={{ padding:"18px 22px" }}>
+                      {/* Component Table */}
+                      <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:10 }}>Components ({asm.parts.length} items)</div>
+                      <table style={{ width:"100%", borderCollapse:"collapse", marginBottom:18 }}>
+                        <thead>
+                          <tr style={{ background:C.navy }}>
+                            {["#","SKU","Component","Qty","Unit Cost","Subtotal",""].map(h => (
+                              <th key={h} style={{ color:C.white, fontSize:11, fontWeight:600, textAlign: h === "#" || h === "Qty" ? "center" : h === "Unit Cost" || h === "Subtotal" ? "right" : "left", padding:"10px 12px" }}>{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {asm.parts.map((p, i) => (
+                            <tr key={p.sku} style={{ borderBottom:`1px solid ${C.g200}`, background: i % 2 ? C.g100 : C.white }}>
+                              <td style={{ padding:"9px 12px", textAlign:"center", fontSize:12, color:C.g500 }}>{i+1}</td>
+                              <td style={{ padding:"9px 12px", fontSize:12, fontWeight:600, color:C.teal }}>{p.sku}</td>
+                              <td style={{ padding:"9px 12px", fontSize:12 }}>{p.name}</td>
+                              <td style={{ padding:"9px 12px", textAlign:"center", fontSize:12, fontWeight:600 }}>×{p.qty}</td>
+                              <td style={{ padding:"9px 12px", textAlign:"right", fontSize:12, fontVariantNumeric:"tabular-nums" }}>${p.cost.toFixed(2)}</td>
+                              <td style={{ padding:"9px 12px", textAlign:"right", fontSize:12, fontWeight:600, fontVariantNumeric:"tabular-nums" }}>${(p.cost * p.qty).toFixed(2)}</td>
+                              <td style={{ padding:"9px 12px", textAlign:"center" }}>
+                                <button style={{ fontSize:11, color:C.danger, background:"none", border:"none", cursor:"pointer" }}
+                                  onClick={() => { if(toast) toast("success",`${p.sku} would be removed from assembly`); }}>✕</button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+
+                      {/* Cost Rollup */}
+                      <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:14, marginBottom:18 }}>
+                        <div style={{ background:C.g100, borderRadius:6, padding:"14px", textAlign:"center" }}>
+                          <div style={{ fontSize:11, color:C.g500, textTransform:"uppercase", letterSpacing:0.4, marginBottom:4 }}>Component Cost</div>
+                          <div style={{ fontSize:18, fontWeight:700, color:C.navy }}>${compCost.toFixed(2)}</div>
+                        </div>
+                        <div style={{ background:C.g100, borderRadius:6, padding:"14px", textAlign:"center" }}>
+                          <div style={{ fontSize:11, color:C.g500, textTransform:"uppercase", letterSpacing:0.4, marginBottom:4 }}>Assembly Labor</div>
+                          <div style={{ fontSize:18, fontWeight:700, color:C.navy }}>${asm.labor.toFixed(2)}</div>
+                        </div>
+                        <div style={{ background:"#E0F4FB", borderRadius:6, padding:"14px", textAlign:"center", border:`1px solid ${C.teal}` }}>
+                          <div style={{ fontSize:11, color:C.teal, textTransform:"uppercase", letterSpacing:0.4, marginBottom:4 }}>Total Cost</div>
+                          <div style={{ fontSize:18, fontWeight:700, color:C.tealDark }}>${totalCost.toFixed(2)}</div>
+                        </div>
+                        <div style={{ background: asm.price > 0 ? "#F0FDF4" : C.g100, borderRadius:6, padding:"14px", textAlign:"center", border: asm.price > 0 ? `1px solid #BBF7D0` : "none" }}>
+                          <div style={{ fontSize:11, color: asm.price > 0 ? C.success : C.g500, textTransform:"uppercase", letterSpacing:0.4, marginBottom:4 }}>
+                            {asm.price > 0 ? `Price (${asm.margin.toFixed(1)}% margin)` : "Price Not Set"}
+                          </div>
+                          <div style={{ fontSize:18, fontWeight:700, color: asm.price > 0 ? C.success : C.g400 }}>
+                            {asm.price > 0 ? `$${asm.price.toFixed(2)}` : "—"}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style={{ display:"flex", gap:8, justifyContent:"flex-end" }}>
+                        <Btn variant="secondary" size="sm" onClick={() => { if(toast) toast("success","Assembly instructions PDF would open"); }}>📄 Instructions</Btn>
+                        <Btn variant="secondary" size="sm" onClick={() => { if(toast) toast("success",`Assembly ${asm.id} exported as CSV`); }}>📥 Export BOM</Btn>
+                        {asm.sync !== "synced" && <Btn size="sm" onClick={() => { if(toast) toast("success",`Assembly ${asm.id} synced to NetSuite — ready for quoting`); }}>Sync to NetSuite →</Btn>}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* ═══════ TAB: SUPPLIER PORTAL ═══════ */}
+        {piTab === "suppliers" && (
+          <div className="stagger-3">
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:16 }}>
+              <div style={{ fontSize:14, color:C.g500 }}>{PI_SUPPLIERS.length} suppliers connected · {PI_SUPPLIERS.reduce((s,x) => s+x.products, 0)} total products</div>
+              <Btn size="sm" onClick={() => setShowSupplierInvite(true)}>+ Invite Supplier</Btn>
+            </div>
+
+            {/* Supplier Stats */}
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:16, marginBottom:20 }}>
+              <div style={{ ...s.card, padding:"16px 18px", textAlign:"center" }}>
+                <div style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:6 }}>Active Suppliers</div>
+                <div style={{ fontSize:26, fontWeight:700, color:C.navy }}>{PI_SUPPLIERS.filter(s=>s.status==="active").length}</div>
+              </div>
+              <div style={{ ...s.card, padding:"16px 18px", textAlign:"center" }}>
+                <div style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:6 }}>Total Products</div>
+                <div style={{ fontSize:26, fontWeight:700, color:C.navy }}>{PI_SUPPLIERS.reduce((s,x) => s+x.products, 0)}</div>
+              </div>
+              <div style={{ ...s.card, padding:"16px 18px", textAlign:"center" }}>
+                <div style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:6 }}>Pending Approval</div>
+                <div style={{ fontSize:26, fontWeight:700, color:C.warn }}>{PI_SUPPLIERS.reduce((s,x) => s+x.pending, 0)}</div>
+              </div>
+              <div style={{ ...s.card, padding:"16px 18px", textAlign:"center" }}>
+                <div style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:6 }}>Approval Rate</div>
+                <div style={{ fontSize:26, fontWeight:700, color:C.success }}>
+                  {Math.round(PI_SUPPLIERS.reduce((s,x)=>s+x.approved,0) / PI_SUPPLIERS.reduce((s,x)=>s+x.products,0) * 100)}%
+                </div>
+              </div>
+            </div>
+
+            {/* Supplier List */}
+            <div style={s.card}>
+              <div style={s.panelHeader}>
+                <div style={s.panelTitle}>🤝 Supplier Directory</div>
+                <div style={s.panelSub}>Manage supplier access and track product uploads</div>
+              </div>
+              <div style={{ overflowX:"auto" }}>
+                <table style={{ width:"100%", borderCollapse:"collapse" }}>
+                  <thead>
+                    <tr style={{ background:C.teal }}>
+                      {["Supplier","Contact","Products","Approved","Pending","Status","Last Upload","Action"].map(h => (
+                        <th key={h} style={{ color:C.white, fontSize:11, fontWeight:600, textAlign:"left", padding:"10px 12px", letterSpacing:0.3 }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {PI_SUPPLIERS.map((sup, i) => (
+                      <tr key={sup.name} style={{ borderBottom:`1px solid ${C.g200}`, background: sup.status === "unresponsive" ? "#FEF2F2" : i % 2 ? C.g100 : C.white }}>
+                        <td style={{ padding:"11px 12px" }}>
+                          <div style={{ fontSize:13, fontWeight:600, color:C.navy }}>{sup.name}</div>
+                        </td>
+                        <td style={{ padding:"11px 12px" }}>
+                          <div style={{ fontSize:12, color:C.g600 }}>{sup.contact}</div>
+                          <div style={{ fontSize:11, color:C.g400 }}>{sup.email}</div>
+                        </td>
+                        <td style={{ padding:"11px 12px", fontSize:13, fontWeight:600 }}>{sup.products}</td>
+                        <td style={{ padding:"11px 12px", fontSize:13, fontWeight:600, color:C.success }}>{sup.approved}</td>
+                        <td style={{ padding:"11px 12px" }}>
+                          {sup.pending > 0 ? <Badge type="amber">{sup.pending} pending</Badge> : <span style={{ fontSize:12, color:C.g400 }}>0</span>}
+                        </td>
+                        <td style={{ padding:"11px 12px" }}>
+                          <Badge type={sup.status === "active" ? "green" : "red"}>{sup.status === "active" ? "Active" : "Unresponsive"}</Badge>
+                        </td>
+                        <td style={{ padding:"11px 12px", fontSize:12, color:C.g500 }}>{sup.lastUpload}</td>
+                        <td style={{ padding:"11px 12px" }}>
+                          <div style={{ display:"flex", gap:6 }}>
+                            {sup.pending > 0 && <Btn size="sm" onClick={() => { setPiTab("extraction"); startExtraction(); }}>Review</Btn>}
+                            <Btn size="sm" variant="secondary" onClick={() => { if(toast) toast("success",`Reminder email sent to ${sup.contact}`); }}>
+                              {sup.status === "unresponsive" ? "Escalate" : "Message"}
+                            </Btn>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+      </div>
+
+      {/* ═══════ MODAL: Product Detail ═══════ */}
+      <Modal open={showDetail} onClose={() => setShowDetail(false)} width={780}>
+        {detailProduct && (
+          <>
+            <ModalHeader icon={statusDot(detailProduct.status)} title={detailProduct.id}
+              subtitle={`${detailProduct.name} · ${detailProduct.cat} · Supplier: ${detailProduct.supplier}`}
+              onClose={() => setShowDetail(false)} />
+            <div style={{ padding:"22px 26px" }}>
+
+              {/* Completeness Bar */}
+              <div style={{ marginBottom:18 }}>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:6 }}>
+                  <span style={{ fontSize:13, fontWeight:600, color:C.navy }}>Launch Readiness</span>
+                  <span style={{ fontSize:14, fontWeight:700, color: statusColor(detailProduct.status) }}>{detailProduct.pct}% Complete</span>
+                </div>
+                <div style={{ width:"100%", height:10, background:C.g200, borderRadius:5, overflow:"hidden" }}>
+                  <div style={{ width:`${detailProduct.pct}%`, height:"100%", background: statusColor(detailProduct.status), borderRadius:5, transition:"width .5s" }} />
+                </div>
+                <div style={{ display:"flex", justifyContent:"space-between", marginTop:4 }}>
+                  <Badge type={detailProduct.status === "ready" ? "green" : detailProduct.status === "progress" ? "amber" : "red"}>{statusLabel(detailProduct.status)}</Badge>
+                  {detailProduct.blocker && <span style={{ fontSize:12, color:C.danger, fontWeight:500 }}>Blocker: {detailProduct.blocker}</span>}
+                </div>
+              </div>
+
+              {/* Attributes Table */}
+              <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:8 }}>Attributes ({detailProduct.attrs.length} fields)</div>
+              <table style={{ width:"100%", borderCollapse:"collapse", marginBottom:16 }}>
+                <thead>
+                  <tr style={{ borderBottom:`2px solid ${C.g200}` }}>
+                    {["Attribute","Value","Confidence"].map(h => (
+                      <th key={h} style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:0.4, color:C.g500, textAlign:"left", paddingBottom:8, paddingRight:12 }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {detailProduct.attrs.map(a => (
+                    <tr key={a.n} style={{ borderBottom:`1px solid ${C.g200}` }}>
+                      <td style={{ padding:"8px 12px 8px 0", fontSize:13, color:C.g600 }}>{a.n}</td>
+                      <td style={{ padding:"8px 12px 8px 0", fontSize:13, fontWeight:600, color: a.v ? C.navy : C.danger }}>
+                        {a.v || <span style={{ fontStyle:"italic" }}>Missing</span>}
+                      </td>
+                      <td style={{ padding:"8px 0" }}>
+                        <span style={{ fontSize:12, fontWeight:600, color: confColor(a.c) }}>{confIcon(a.c)} {a.c > 0 ? `${a.c}%` : "Missing"}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Missing Fields */}
+              {detailProduct.missing && detailProduct.missing.length > 0 && (
+                <div style={{ padding:"12px 16px", background:"#FEF3C7", border:`1px solid #FDE68A`, borderRadius:6, marginBottom:16 }}>
+                  <div style={{ fontSize:13, fontWeight:600, color:"#92400E", marginBottom:4 }}>⚠ Missing Required Fields</div>
+                  <div style={{ fontSize:12, color:"#92400E" }}>{detailProduct.missing.join(" · ")}</div>
+                </div>
+              )}
+
+              {/* Competitive Equivalents */}
+              {detailProduct.comps.length > 0 && (
+                <div style={{ marginBottom:16 }}>
+                  <div style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:0.5, color:C.g500, marginBottom:8 }}>Competitive Equivalents (AI Matched)</div>
+                  <div style={{ display:"flex", gap:10 }}>
+                    {detailProduct.comps.map(c => (
+                      <div key={c.sku} style={{ padding:"10px 14px", background:C.g100, borderRadius:6, border:`1px solid ${C.g200}` }}>
+                        <div style={{ fontSize:13, fontWeight:600, color:C.navy }}>{c.brand}</div>
+                        <div style={{ fontSize:12, color:C.g500 }}>{c.sku}</div>
+                        <Badge type={c.match >= 85 ? "green" : c.match >= 70 ? "amber" : "default"}>{c.match}% match</Badge>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* NetSuite Sync Status */}
+              <div style={{ padding:"14px 16px", background: detailProduct.sync === "synced" ? "#F0FDF4" : C.g100, borderRadius:6, border:`1px solid ${detailProduct.sync === "synced" ? "#BBF7D0" : C.g300}`, marginBottom:16 }}>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                  <div>
+                    <div style={{ fontSize:13, fontWeight:600, color: detailProduct.sync === "synced" ? C.success : C.g600 }}>
+                      {detailProduct.sync === "synced" ? "✓ Synced to NetSuite" : detailProduct.sync === "pending" ? "⏳ Pending NetSuite Sync" : "✗ Not Synced"}
+                    </div>
+                    {detailProduct.nsId && <div style={{ fontSize:12, color:C.g500, marginTop:2 }}>NetSuite Item ID: {detailProduct.nsId} · Last sync: {detailProduct.syncAt}</div>}
+                  </div>
+                  {detailProduct.sync === "synced" && <Btn size="sm" variant="secondary" onClick={() => { if(toast) toast("success","Opening NetSuite record..."); }}>View in NetSuite →</Btn>}
+                </div>
+              </div>
+
+              {/* Supplier Info */}
+              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+                {[["Supplier", detailProduct.supplier], ["Supplier SKU", detailProduct.sku], ["Owner", detailProduct.owner], ["Last Updated", detailProduct.at],
+                  ...(detailProduct.cost ? [["Cost", `$${detailProduct.cost.toFixed(2)}`]] : []),
+                  ...(detailProduct.price ? [["List Price", `$${detailProduct.price.toFixed(2)}`]] : []),
+                ].map(([l,v]) => (
+                  <div key={l} style={{ display:"flex", justifyContent:"space-between", padding:"6px 0", borderBottom:`1px solid ${C.g200}`, fontSize:12 }}>
+                    <span style={{ color:C.g500 }}>{l}</span>
+                    <span style={{ fontWeight:500, color:C.navy }}>{v}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ padding:"16px 26px", borderTop:`1px solid ${C.g200}`, display:"flex", justifyContent:"flex-end", gap:10 }}>
+              <Btn variant="ghost" onClick={() => setShowDetail(false)}>Close</Btn>
+              {detailProduct.status === "ready" && detailProduct.sync !== "synced" && (
+                <Btn onClick={() => { setShowDetail(false); handleLaunch(detailProduct); }}>Launch to NetSuite →</Btn>
+              )}
+            </div>
+          </>
+        )}
+      </Modal>
+
+      {/* ═══════ MODAL: NetSuite Sync Confirm ═══════ */}
+      <ConfirmDialog open={!!showSyncConfirm}
+        title="Launch Product to NetSuite"
+        message={showSyncConfirm ? `Launch ${showSyncConfirm.id} to NetSuite?\n\nThis will:\n• Create item record in NetSuite\n• Populate all ${showSyncConfirm.attrs.length} attributes\n• Set up competitive cross-references\n• Notify sales team of new product\n\nThe product will be quotable immediately after sync.` : ""}
+        confirmLabel="Launch Now" cancelLabel="Cancel"
+        onConfirm={() => showSyncConfirm && confirmLaunch(showSyncConfirm)}
+        onCancel={() => setShowSyncConfirm(null)} />
+
+      {/* ═══════ MODAL: Supplier Invite ═══════ */}
+      <Modal open={showSupplierInvite} onClose={() => setShowSupplierInvite(false)} width={520}>
+        <ModalHeader icon="🤝" title="Invite Supplier to Portal" subtitle="Supplier can upload specs directly to BOSS" onClose={() => setShowSupplierInvite(false)} />
+        <div style={{ padding:"22px 26px" }}>
+          {[["Supplier Name","e.g., Acme Hydraulics"],["Contact Email","e.g., john@acmehydraulics.com"],["Contact Name","e.g., John Smith"]].map(([label, ph]) => (
+            <div key={label} style={{ marginBottom:14 }}>
+              <div style={{ fontSize:13, fontWeight:600, color:C.navy, marginBottom:4 }}>{label}</div>
+              <input placeholder={ph} style={{ width:"100%", height:40, borderRadius:6, border:`1px solid ${C.g400}`, padding:"0 12px", fontSize:13, outline:"none" }}
+                onFocus={e => e.target.style.borderColor = C.teal} onBlur={e => e.target.style.borderColor = C.g400} />
+            </div>
+          ))}
+          <div style={{ marginBottom:14 }}>
+            <div style={{ fontSize:13, fontWeight:600, color:C.navy, marginBottom:4 }}>Permissions</div>
+            <div style={{ display:"flex", gap:12 }}>
+              {["Upload Products","Update Specs","View Inventory Status"].map(p => (
+                <label key={p} style={{ display:"flex", alignItems:"center", gap:6, fontSize:12, color:C.g600 }}>
+                  <input type="checkbox" defaultChecked /> {p}
+                </label>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div style={{ padding:"16px 26px", borderTop:`1px solid ${C.g200}`, display:"flex", justifyContent:"flex-end", gap:10 }}>
+          <Btn variant="ghost" onClick={() => setShowSupplierInvite(false)}>Cancel</Btn>
+          <Btn onClick={() => { setShowSupplierInvite(false); if(toast) toast("success","Invitation email sent to supplier — they can now upload specs to BOSS portal"); }}>Send Invitation →</Btn>
+        </div>
+      </Modal>
+    </div>
+  );
 }
 
 /* ─────────────────────────────────────────────
@@ -2102,7 +3067,7 @@ export default function App() {
         <ProfitabilityScreen onHome={onNavigateHome} />
       )}
       {!loading && screen === "product" && (
-        <ProductScreen onHome={onNavigateHome} />
+        <ProductScreen onHome={onNavigateHome} toast={toast} />
       )}
 
       <ConfirmDialog open={showConfirm}
